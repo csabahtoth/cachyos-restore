@@ -15,7 +15,13 @@ apply_fixups() {
       local tmp
       tmp="$(mktemp -d)"
       hyprcursor-util --extract /usr/share/icons/capitaine-cursors -o "$tmp"
-      hyprcursor-util --create "$tmp" -o "$HOME/.local/share/icons" -n capitaine-cursors-hypr
+      # hyprcursor-util has no flag to set the theme name; it's read from
+      # manifest.hl, and --create prefixes the output dir with "theme_".
+      sed -i 's/^name = .*/name = capitaine-cursors-hypr/' "$tmp/extracted_capitaine-cursors/manifest.hl"
+      mkdir -p "$HOME/.local/share/icons"
+      hyprcursor-util --create "$tmp/extracted_capitaine-cursors" -o "$HOME/.local/share/icons"
+      rm -rf "$HOME/.local/share/icons/capitaine-cursors-hypr"
+      mv "$HOME/.local/share/icons/theme_capitaine-cursors-hypr" "$HOME/.local/share/icons/capitaine-cursors-hypr"
       rm -rf "$tmp"
     fi
   fi
