@@ -1,0 +1,18 @@
+require("cfg/variables")
+require("cfg/colors")
+require("cfg/animations")
+require("cfg/autostart")
+require("cfg/binds")
+require("cfg/decorations")
+require("cfg/environment")
+require("cfg/inputs")
+require("cfg/misc")
+require("cfg/monitors")
+require("cfg/windowrules")
+require("cfg/workspaces")
+
+-- hyprmon: managed monitor profile include
+require("hyprmon")
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()
