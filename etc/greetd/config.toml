@@ -1,0 +1,16 @@
+[terminal]
+# The VT to run the greeter on. Can be "next", "current" or a number
+# designating the VT.
+vt = 1
+
+# The default session, also known as the greeter.
+[default_session]
+
+# noctalia-greeter-session launches the Noctalia greeter UI; the trailing
+# `-- --session Hyprland` picks Hyprland as the session to launch after
+# login.
+command = "/usr/bin/noctalia-greeter-session -- --session Hyprland"
+
+# The user to run the command as. The privileges this user must have depend
+# on the greeter. The `greetd` package creates this user automatically.
+user = "greeter"
