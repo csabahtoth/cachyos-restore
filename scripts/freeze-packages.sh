@@ -6,8 +6,11 @@ EXCLUDE_AUR=("noctalia-git" "noctalia-greeter-git")
 # Pinned into pacman.txt even when not explicitly installed live: this
 # machine runs the AUR -git equivalents above (excluded from aur.txt), but
 # a fresh "No Desktop" install should pull the stable CachyOS repo packages
-# instead of building the -git versions from AUR.
-EXTRA_PACMAN=("noctalia" "noctalia-greeter")
+# instead of building the -git versions from AUR. greetd is included too
+# since it currently only arrives as a transitive dependency of
+# noctalia-greeter on this machine — pinning it explicitly avoids a
+# non-obvious failure in setup_greeter if that dependency ever changes.
+EXTRA_PACMAN=("noctalia" "noctalia-greeter" "greetd")
 
 mkdir -p "$REPO_ROOT/pkglist"
 

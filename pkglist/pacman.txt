@@ -62,6 +62,7 @@ fwupd
 ghostty
 git
 gnome-boxes
+greetd
 gst-libav
 gst-plugin-pipewire
 gst-plugins-bad

@@ -8,9 +8,9 @@ setup_greeter() {
   echo "==> Installing /etc/greetd/config.toml and enabling greetd"
   if [ "$dry_run" = "--dry-run" ]; then
     echo "[dry-run] would run: sudo install -Dm644 $repo_root/etc/greetd/config.toml /etc/greetd/config.toml"
-    echo "[dry-run] would run: sudo systemctl enable --now greetd"
+    echo "[dry-run] would run: sudo systemctl enable greetd"
   else
     sudo install -Dm644 "$repo_root/etc/greetd/config.toml" /etc/greetd/config.toml
-    sudo systemctl enable --now greetd
+    sudo systemctl enable greetd
   fi
 }

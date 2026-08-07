@@ -25,8 +25,8 @@ source "$REPO_ROOT/lib/fixups.sh"
 
 install_packages "$REPO_ROOT" "$DRY_RUN"
 overlay_dotfiles "$REPO_ROOT" "$DRY_RUN"
-setup_greeter "$REPO_ROOT" "$DRY_RUN"
 apply_fixups "$DRY_RUN"
+setup_greeter "$REPO_ROOT" "$DRY_RUN"
 
 cat <<'EOF'
 
