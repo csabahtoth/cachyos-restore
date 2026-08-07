@@ -7,8 +7,8 @@ overlay_dotfiles() {
 
   echo "==> Overlaying dotfiles from home/ onto \$HOME"
   if [ "$dry_run" = "--dry-run" ]; then
-    echo "[dry-run] would run: cp -riv $repo_root/home/. $HOME/"
+    echo "[dry-run] would run: cp -rv $repo_root/home/. $HOME/"
   else
-    cp -riv "$repo_root/home/." "$HOME/"
+    cp -rv "$repo_root/home/." "$HOME/"
   fi
 }
