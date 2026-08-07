@@ -36,8 +36,7 @@ cachyos-restore/
 │       ├── hypr/              # flattened copy of current ~/.config/hypr
 │       ├── noctalia/
 │       ├── ghostty/ kitty/ btop/ micro/ yazi/ zed/ git/
-│       ├── gtk-3.0/ gtk-4.0/ mimeapps.list dolphinrc flameshot/ superfile/
-│       └── systemd/user/      # user units (e.g. stock-checker timer)
+│       └── gtk-3.0/ gtk-4.0/ mimeapps.list dolphinrc flameshot/ superfile/
 └── README.md                 # what's included, what's excluded and why
 ```
 
@@ -63,7 +62,9 @@ cachyos-restore/
      theme), carried over from the old `cachyos-hyprland` install script.
 4. **Reminder output.** Print what was *not* automated: Documents/Downloads/
    Pictures, SSH/GPG keys/credentials, browser logins/bookmarks (each
-   browser has its own account sync).
+   browser has its own account sync), and re-running the install steps of
+   other `ai_projects/` subprojects that own their own systemd user units
+   (e.g. `stock-checker`).
 
 ## Explicit exclusions
 
@@ -78,6 +79,11 @@ cachyos-restore/
   `home/.config/hypr/`. The migration reasoning behind that config stays
   documented in the `hypr-noctalia-migration` project (see its `CLAUDE.md`
   and the `hypr_noctalia_migration_project` memory entry).
+- **`~/.config/systemd/user/*`.** Units like `stock-checker.timer` belong to
+  their own project (e.g. `ai_projects/stock-checker/`), which already owns
+  installing/enabling them. Duplicating them here would create two sources
+  of truth for the same file. The reminder output in stage 4 prompts you to
+  re-run each such project's own setup instead.
 
 ## Not touched by this project
 
