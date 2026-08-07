@@ -6,13 +6,19 @@ DEST="$REPO_ROOT/home"
 
 CONFIG_DIRS=(hypr noctalia ghostty kitty btop micro yazi zed git gtk-3.0 gtk-4.0 flameshot superfile)
 CONFIG_FILES=(mimeapps.list dolphinrc)
-HOME_FILES=(.zshrc .bashrc)
+HOME_FILES=(.zshrc .bashrc .gitconfig)
 
 mkdir -p "$DEST/.config"
 
 for d in "${CONFIG_DIRS[@]}"; do
   if [ -d "$HOME/.config/$d" ]; then
-    rsync -a --delete --exclude='.git' "$HOME/.config/$d/" "$DEST/.config/$d/"
+    rsync_excludes=(--exclude='.git')
+    case "$d" in
+      yazi) rsync_excludes+=(--exclude='vfs.toml') ;;
+      gtk-4.0) rsync_excludes+=(--exclude='servers') ;;
+      noctalia) rsync_excludes+=(--exclude='plugins-v4-legacy-backup-*') ;;
+    esac
+    rsync -a --delete "${rsync_excludes[@]}" "$HOME/.config/$d/" "$DEST/.config/$d/"
     echo "Collected .config/$d"
   else
     echo "Skipping .config/$d (not present on this machine)"
