@@ -19,15 +19,4 @@ apply_fixups() {
       rm -rf "$tmp"
     fi
   fi
-
-  echo "==> Re-applying GTK theme (materia-dark)"
-  if [ "$dry_run" = "--dry-run" ]; then
-    echo "[dry-run] would symlink gtk-4.0 theme assets and run gsettings set for gtk-theme/icon-theme"
-  else
-    mkdir -p "$HOME/.config/gtk-4.0"
-    ln -sf /usr/share/themes/Materia-dark/gtk-4.0/gtk.css "$HOME/.config/gtk-4.0/"
-    ln -sf /usr/share/themes/Materia-dark/gtk-4.0/assets/ "$HOME/.config/gtk-4.0/"
-    gsettings set org.gnome.desktop.interface gtk-theme "Materia-dark"
-    gsettings set org.gnome.desktop.interface icon-theme "breeze-dark"
-  fi
 }

@@ -29,10 +29,9 @@ encrypted CachyOS install. Full design rationale is in
   `noctalia-greeter-git`, since step 2 above already installs those).
 - Dotfiles for: Hyprland, Noctalia, Ghostty, Kitty, btop, micro, yazi, Zed,
   git, GTK 3/4 theming, Flameshot, Superfile, plus `mimeapps.list`,
-  `dolphinrc`, `.zshrc`, `.bashrc`.
+  `dolphinrc`, `.zshrc`, `.bashrc`, `.gitconfig`.
 - The `capitaine-cursors` hyprcursor theme (regenerated, since it lives
   outside any tracked config directory).
-- The Materia-dark GTK/icon theme symlinks and `gsettings` values.
 
 ## What it deliberately does NOT restore
 

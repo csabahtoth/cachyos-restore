@@ -4,6 +4,11 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 DRY_RUN=""
 
+if [ -n "${1:-}" ] && [ "$1" != "--dry-run" ]; then
+  echo "Usage: $0 [--dry-run]" >&2
+  exit 1
+fi
+
 if [ "${1:-}" = "--dry-run" ]; then
   DRY_RUN="--dry-run"
   echo "==> Running in --dry-run mode: no changes will be made"
