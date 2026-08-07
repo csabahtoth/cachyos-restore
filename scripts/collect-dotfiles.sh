@@ -4,8 +4,8 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DEST="$REPO_ROOT/home"
 
-CONFIG_DIRS=(hypr noctalia ghostty kitty btop micro yazi zed git gtk-3.0 gtk-4.0 flameshot superfile)
-CONFIG_FILES=(mimeapps.list dolphinrc)
+CONFIG_DIRS=(hypr noctalia ghostty kitty btop micro yazi zed git gtk-3.0 gtk-4.0 superfile)
+CONFIG_FILES=(mimeapps.list)
 HOME_FILES=(.zshrc .bashrc .gitconfig)
 
 mkdir -p "$DEST/.config"

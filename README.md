@@ -39,8 +39,8 @@ itself. Full design rationale is in
   machine boots straight into the Noctalia greeter after the reboot in
   step 5.
 - Dotfiles for: Hyprland, Noctalia, Ghostty, Kitty, btop, micro, yazi, Zed,
-  git, GTK 3/4 theming, Flameshot, Superfile, plus `mimeapps.list`,
-  `dolphinrc`, `.zshrc`, `.bashrc`, `.gitconfig`.
+  git, GTK 3/4 theming, Superfile, plus `mimeapps.list`, `.zshrc`,
+  `.bashrc`, `.gitconfig`.
 - `~/.local/state/noctalia/settings.toml` — Noctalia's authoritative runtime
   config (`~/.config/noctalia/settings.json` is a stale, non-authoritative
   duplicate). This is what carries the enabled plugin list and plugin source
