@@ -72,7 +72,6 @@ helium-browser-bin
 hwdetect
 hwinfo
 hyprland
-hyprmon-bin
 hyprpicker
 hyprpolkitagent
 hyprsunset
@@ -115,8 +114,6 @@ networkmanager
 networkmanager-openvpn
 nfs-utils
 nilfs-utils
-noctalia-git
-noctalia-greeter-git
 nodejs
 noto-fonts
 noto-fonts-cjk
@@ -169,7 +166,6 @@ ttf-jetbrains-mono-nerd
 ttf-liberation
 ttf-meslo-nerd
 ttf-opensans
-twingate
 ufw
 ufw-extras
 unrar

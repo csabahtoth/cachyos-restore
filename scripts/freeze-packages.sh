@@ -6,9 +6,10 @@ EXCLUDE_AUR=("noctalia-git" "noctalia-greeter-git")
 
 mkdir -p "$REPO_ROOT/pkglist"
 
-pacman -Qqe | sort > "$REPO_ROOT/pkglist/pacman.txt"
+pacman -Qqen | sort > "$REPO_ROOT/pkglist/pacman.txt"
 
-pacman -Qqem | sort | grep -vxF -f <(printf '%s\n' "${EXCLUDE_AUR[@]}") \
+aur_pkgs="$(pacman -Qqem | sort)"
+printf '%s\n' "$aur_pkgs" | grep -vxF -f <(printf '%s\n' "${EXCLUDE_AUR[@]}") \
   > "$REPO_ROOT/pkglist/aur.txt" || true
 
 echo "Wrote $(wc -l < "$REPO_ROOT/pkglist/pacman.txt") packages to pkglist/pacman.txt"
