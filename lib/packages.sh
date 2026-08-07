@@ -21,14 +21,14 @@ install_packages() {
 
   echo "==> Installing pacman packages from pkglist/pacman.txt"
   if [ "$dry_run" = "--dry-run" ]; then
-    echo "[dry-run] would run: sudo pacman -S --needed - < $repo_root/pkglist/pacman.txt"
+    echo "[dry-run] would run: cat \"$repo_root/pkglist/pacman.txt\" | sudo pacman -S --needed -"
   else
     cat "$repo_root/pkglist/pacman.txt" | sudo pacman -S --needed -
   fi
 
   echo "==> Installing AUR packages from pkglist/aur.txt"
   if [ "$dry_run" = "--dry-run" ]; then
-    echo "[dry-run] would run: paru -S --needed - < $repo_root/pkglist/aur.txt"
+    echo "[dry-run] would run: cat \"$repo_root/pkglist/aur.txt\" | paru -S --needed -"
   else
     cat "$repo_root/pkglist/aur.txt" | paru -S --needed -
   fi
