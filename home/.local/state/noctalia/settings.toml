@@ -1,0 +1,307 @@
+config_version = 12
+
+[bar]
+order = [ "default" ]
+
+    [bar.default]
+    capsule = true
+    capsule_opacity = 0.59999998658895493
+    capsule_padding = 4.0
+    center = [ "cat_2", "clock", "privacy" ]
+    end = [
+        "tray",
+        "shelly",
+        "notifications",
+        "battery",
+        "volume",
+        "brightness",
+        "network",
+        "bluetooth",
+        "control-center",
+        "session"
+    ]
+    margin_edge = 1
+    margin_ends = 1
+    padding = 10
+    start = [ "workspaces", "group:g1", "active_window" ]
+
+        [bar.default.monitor.DP-3]
+        end = [ "control-center" ]
+        start = [ "workspaces" ]
+
+        [bar.default.monitor.eDP-1]
+
+        [[bar.default.capsule_group]]
+        fill = "surface_variant"
+        id = "g1"
+        members = [ "temp", "ram", "cpu" ]
+        opacity = 0.59999996423721313
+        padding = 10.0
+
+[battery]
+warning_threshold = 15
+
+    [battery.device."/org/freedesktop/UPower/devices/battery_hidpp_battery_0"]
+    warning_threshold = 10
+
+[desktop_widgets]
+enabled = false
+
+[location]
+address = "Leeds, UK"
+
+[lockscreen]
+blur_intensity = 0.24999999441206455
+blurred_desktop = true
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [
+    "lockscreen-login-box@DP-3",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-0000000000000001",
+    "lockscreen-widget-0000000000000002"
+]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 540.0
+    cy = 1136.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 807.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 224.0
+    box_width = 368.0
+    cx = 960.0
+    cy = 528.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = true
+        background_radius = 20.0
+        format = "{:%H:%M}"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 208.0
+    box_width = 320.0
+    cx = 540.0
+    cy = 856.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "clock"
+
+[plugin_settings."blackbartblues/keymap"]
+columns = 4
+compositor = "hyprland"
+hyprland_config = "~/.config/hypr/cfg/binds.lua"
+panel_placement = "attached"
+
+[plugin_settings."noctalia/screen_recorder"]
+color_range = "full"
+
+[plugins]
+enabled = [ "noctalia/bongocat", "joshuaslate/shelly", "noctalia/notes", "blackbartblues/keymap" ]
+
+    [[plugins.source]]
+    auto_update = true
+    kind = "git"
+    location = "https://github.com/noctalia-dev/official-plugins"
+    name = "official"
+
+    [[plugins.source]]
+    kind = "git"
+    location = "https://github.com/noctalia-dev/community-plugins"
+    name = "community"
+
+[shell]
+polkit_agent = true
+screen_time_enabled = true
+settings_show_advanced = true
+
+    [shell.panel]
+    launcher_placement = "attached"
+    session_placement = "centered"
+    transparency_mode = "glass"
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "suspend"
+    countdown_seconds = 3.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 3.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 3.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "notify-send 'Noctalia' 'Custom session entry'"
+    countdown_seconds = 0.0
+    enabled = false
+    variant = "default"
+
+[theme]
+builtin = "Tokyo-Night"
+community_palette = "Catppuccin Macchiato Blue"
+mode = "dark"
+source = "community"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "gtk3", "gtk4", "ghostty", "hyprland" ]
+    community_ids = [ "zen-browser", "discord", "zed", "yazi" ]
+
+[wallpaper]
+directory = "/home/csaba/Pictures/Wallpapers/mountain"
+transition = [ "disc", "fade", "honeycomb", "wipe", "zoom" ]
+
+    [wallpaper.automation]
+    enabled = true
+    interval_seconds = 900
+
+    [wallpaper.default]
+    path = "/home/csaba/Pictures/Wallpapers/mountain/a_mountain_with_snow_on_top_and_a_body_of_water_01.jpg"
+
+    [wallpaper.last]
+    path = "/home/csaba/Pictures/Wallpapers/mountain/a_mountain_with_snow_on_top_and_a_body_of_water_01.jpg"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/csaba/Pictures/Wallpapers/mountain/a_snowy_mountain_range_with_sun_shining_on_it.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/csaba/Pictures/Wallpapers/mountain/a_mountain_with_snow_on_top_and_a_body_of_water_01.jpg"
+
+[widget.active_window]
+max_length = 200
+min_length = 100
+title_scroll = "on_hover"
+
+[widget.brightness]
+enabled = false
+
+[widget.cat]
+type = "noctalia/bongocat:cat"
+
+[widget.cat_2]
+input_devices = [ "/dev/input/by-path/platform-i8042-serio-0-event-kbd", "/dev/input/event15", "/dev/input/event14" ]
+type = "noctalia/bongocat:cat"
+
+[widget.clock]
+format = "{:%H:%M |%A, %b %e}"
+
+[widget.cpu]
+display = "text"
+show_label = false
+visualization = "none"
+
+[widget.privacy]
+hide_inactive = true
+
+[widget.ram]
+display = "text"
+show_label = false
+visualization = "none"
+
+[widget.recorder]
+type = "noctalia/screen_recorder:recorder"
+
+[widget.recorder_2]
+type = "noctalia/screen_recorder:recorder"
+
+[widget.shelly]
+click_action = "open_updater"
+hide_when_up_to_date = true
+type = "joshuaslate/shelly:shelly"
+
+[widget.sysmon_2]
+type = "sysmon"
+
+[widget.sysmon_3]
+type = "sysmon"
+
+[widget.sysmon_4]
+type = "sysmon"
+
+[widget.temp]
+display = "text"
+show_label = false
+visualization = "none"
+
+[widget.tray]
+drawer = true

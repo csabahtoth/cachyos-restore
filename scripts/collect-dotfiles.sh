@@ -38,3 +38,22 @@ for f in "${HOME_FILES[@]}"; do
     echo "Collected $f"
   fi
 done
+
+# Noctalia's authoritative runtime settings (plugins enabled/sources, hooks,
+# templates) live in the state dir, not .config — .config/noctalia/settings.json
+# is a stale, non-authoritative duplicate. Only the settings.toml file itself is
+# captured; plugins/sources, plugins/materialized, and plugin-cache are
+# regenerable clone/build caches Noctalia rebuilds from the source URLs on
+# first launch, so they're deliberately left out.
+if [ -e "$HOME/.local/state/noctalia/settings.toml" ]; then
+  mkdir -p "$DEST/.local/state/noctalia"
+  # Strip [plugin_settings."pozzoo/hassio"] — holds a live Home Assistant
+  # long-lived access token, not safe to commit. Re-enter it manually in
+  # Noctalia's plugin settings after a restore.
+  awk '
+    /^\[plugin_settings\."pozzoo\/hassio"\]/ { skip=1; next }
+    skip && /^\[/ { skip=0 }
+    !skip
+  ' "$HOME/.local/state/noctalia/settings.toml" > "$DEST/.local/state/noctalia/settings.toml"
+  echo "Collected .local/state/noctalia/settings.toml (hassio token redacted)"
+fi

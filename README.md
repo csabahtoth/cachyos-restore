@@ -40,6 +40,14 @@ itself. Full design rationale is in
 - Dotfiles for: Hyprland, Noctalia, Ghostty, Kitty, btop, micro, yazi, Zed,
   git, GTK 3/4 theming, Flameshot, Superfile, plus `mimeapps.list`,
   `dolphinrc`, `.zshrc`, `.bashrc`, `.gitconfig`.
+- `~/.local/state/noctalia/settings.toml` — Noctalia's authoritative runtime
+  config (`~/.config/noctalia/settings.json` is a stale, non-authoritative
+  duplicate). This is what carries the enabled plugin list and plugin source
+  URLs (`noctalia-dev/official-plugins`, `noctalia-dev/community-plugins`);
+  Noctalia clones and materializes the plugins itself from those URLs on
+  first launch after reboot, so no separate plugin-install step is needed —
+  the regenerable clone/build caches (`plugins/sources`,
+  `plugins/materialized`, `plugin-cache`) are deliberately not backed up.
 - The `capitaine-cursors` hyprcursor theme (regenerated, since it lives
   outside any tracked config directory).
 
