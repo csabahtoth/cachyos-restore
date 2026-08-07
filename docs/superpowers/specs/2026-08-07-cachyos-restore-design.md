@@ -44,8 +44,13 @@ cachyos-restore/
 ## install.sh stages
 
 1. **Packages.** Install `paru` if missing. `pacman -S --needed -` from
-   `pkglist/pacman.txt`, then `paru -S --needed -` from `pkglist/aur.txt`.
-   `--needed` skips already-installed packages, making this safe to re-run.
+   `pkglist/pacman.txt`, then `paru -S --needed -` from `pkglist/aur.txt`
+   (which excludes `noctalia-git`/`noctalia-greeter-git` — see below).
+   `--needed` skips already-installed packages, making this safe to re-run;
+   if the installer's Hyprland bundle ever ships non-`-git` `noctalia`
+   packages instead, `--needed` combined with the exclusion means nothing
+   auto-corrects that mismatch, so a quick `pacman -Qe | grep noctalia`
+   sanity check after install is worth doing once.
 2. **Dotfiles overlay.** `cp -riv home/. ~/` — interactive, won't silently
    clobber existing files on a re-run.
 3. **Known post-copy fixups.**
@@ -83,7 +88,12 @@ cachyos-restore/
 ## Data sources for the frozen snapshots
 
 - `pkglist/pacman.txt` ← `pacman -Qqe` (199 packages as of 2026-08-07)
-- `pkglist/aur.txt` ← `pacman -Qqem` (4 packages as of 2026-08-07)
+- `pkglist/aur.txt` ← `pacman -Qqem`, **minus `noctalia-git` and
+  `noctalia-greeter-git`**. Those two are already installed by the CachyOS
+  installer's "Hyprland" desktop environment selection (part of the
+  `cachyos-hypr-noctalia` bundle) — reinstalling them from AUR would be
+  redundant. The remaining AUR packages (`hyprmon-bin`, `twingate`) are
+  genuinely extra and belong in the frozen list.
 - `home/.config/*` ← copied directly from the live `~/.config/` tree,
   restricted to the whitelist above.
 
