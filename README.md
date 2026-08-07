@@ -50,6 +50,10 @@ itself. Full design rationale is in
   `plugins/materialized`, `plugin-cache`) are deliberately not backed up.
 - The `capitaine-cursors` hyprcursor theme (regenerated, since it lives
   outside any tracked config directory).
+- The `hyprpolkitagent` user service, enabled via `systemctl --user enable`
+  (the package doesn't ship this enablement itself, so a fresh install
+  otherwise has no graphical polkit auth agent — privilege-elevation prompts
+  in GUI apps would silently fail to appear).
 
 ## What it deliberately does NOT restore
 

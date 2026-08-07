@@ -25,4 +25,15 @@ apply_fixups() {
       rm -rf "$tmp"
     fi
   fi
+
+  echo "==> Enabling hyprpolkitagent (graphical polkit auth agent)"
+  if [ "$dry_run" = "--dry-run" ]; then
+    echo "[dry-run] would run: systemctl --user enable hyprpolkitagent.service"
+  else
+    if [ ! -f /usr/lib/systemd/user/hyprpolkitagent.service ]; then
+      echo "WARNING: hyprpolkitagent.service not found — is hyprpolkitagent installed? Skipping enable."
+    else
+      systemctl --user enable hyprpolkitagent.service
+    fi
+  fi
 }
