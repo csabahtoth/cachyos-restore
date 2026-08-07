@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-EXCLUDE_AUR=("noctalia-git" "noctalia-greeter-git")
+EXCLUDE_AUR=("noctalia-git" "noctalia-greeter-git" "twingate")
 # Pinned into pacman.txt even when not explicitly installed live: this
 # machine runs the AUR -git equivalents above (excluded from aur.txt), but
 # a fresh "No Desktop" install should pull the stable CachyOS repo packages
@@ -10,6 +10,8 @@ EXCLUDE_AUR=("noctalia-git" "noctalia-greeter-git")
 # since it currently only arrives as a transitive dependency of
 # noctalia-greeter on this machine — pinning it explicitly avoids a
 # non-obvious failure in setup_greeter if that dependency ever changes.
+# twingate is excluded because its AUR build/install is currently causing
+# problems on restore — install it manually after the fact if needed.
 EXTRA_PACMAN=("noctalia" "noctalia-greeter" "greetd")
 
 mkdir -p "$REPO_ROOT/pkglist"

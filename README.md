@@ -31,9 +31,10 @@ itself. Full design rationale is in
   pinned deliberately even though this machine itself runs the AUR `-git`
   equivalents) and AUR packages (`pkglist/aur.txt` — permanently excludes
   `noctalia-git`/`noctalia-greeter-git` in favor of the repo versions
-  above); the dotfiles config was captured from the `-git` build, so check
-  Noctalia's settings after first boot in case the stable release's config
-  schema has drifted.
+  above, and `twingate` since its AUR build has been causing install
+  trouble — install it manually if needed); the dotfiles config was
+  captured from the `-git` build, so check Noctalia's settings after first
+  boot in case the stable release's config schema has drifted.
 - `/etc/greetd/config.toml` and an enabled `greetd` service, so a fresh
   machine boots straight into the Noctalia greeter after the reboot in
   step 5.
