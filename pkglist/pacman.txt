@@ -62,6 +62,7 @@ fwupd
 ghostty
 git
 gnome-boxes
+greetd
 gst-libav
 gst-plugin-pipewire
 gst-plugins-bad
@@ -114,6 +115,8 @@ networkmanager
 networkmanager-openvpn
 nfs-utils
 nilfs-utils
+noctalia
+noctalia-greeter
 nodejs
 noto-fonts
 noto-fonts-cjk

@@ -68,11 +68,16 @@ repo currently configures the greeter.
   pattern: `packages.sh`, `dotfiles.sh`, `fixups.sh`), exposing
   `setup_greeter <repo_root> <dry_run>`:
   - `sudo install -Dm644 "$repo_root/etc/greetd/config.toml" /etc/greetd/config.toml`
-  - `sudo systemctl enable --now greetd`
+  - `sudo systemctl enable greetd` (no `--now`)
   - Respects `--dry-run` the same way the other stages do (print what would
     run, no changes).
-- `install.sh` sources `lib/greeter.sh` and calls `setup_greeter` as a new
-  stage, after `overlay_dotfiles` and before (or alongside) `apply_fixups`.
+- `install.sh` sources `lib/greeter.sh` and calls `setup_greeter` as the
+  last stage, after `apply_fixups`. This ordering is required, not
+  cosmetic: `greetd.service` declares `Conflicts=getty@tty1.service`, and
+  the README has the user log in and run `install.sh` from tty1 itself —
+  if `setup_greeter` ever started greetd immediately (e.g. by adding
+  `--now` back), it would tear down the very TTY session running the
+  installer mid-script, so it must run last and must not use `--now`.
 - Nothing else is needed for the greeter itself:
   - `noctalia-greeter`'s own package post-install already runs its system
     setup script automatically (PAM patch, greeter data paths, appearance

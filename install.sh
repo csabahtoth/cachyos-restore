@@ -18,12 +18,15 @@ fi
 source "$REPO_ROOT/lib/packages.sh"
 # shellcheck source=lib/dotfiles.sh
 source "$REPO_ROOT/lib/dotfiles.sh"
+# shellcheck source=lib/greeter.sh
+source "$REPO_ROOT/lib/greeter.sh"
 # shellcheck source=lib/fixups.sh
 source "$REPO_ROOT/lib/fixups.sh"
 
 install_packages "$REPO_ROOT" "$DRY_RUN"
 overlay_dotfiles "$REPO_ROOT" "$DRY_RUN"
 apply_fixups "$DRY_RUN"
+setup_greeter "$REPO_ROOT" "$DRY_RUN"
 
 cat <<'EOF'
 
